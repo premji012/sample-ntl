@@ -46,5 +46,8 @@ module.exports = {
             systemvars: true
         }),
 		new CleanWebpackPlugin(),
+		new HtmlWebpackPlugin({
+			template: paths.templatePath
+		}),
 	]
 };
