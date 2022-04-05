@@ -1,0 +1,8 @@
+/node_modules/
+/public/
+/dist/
+/dist_production/
+/tmp/
+
+.DS_Store
+.vscode

@@ -1,0 +1,37 @@
+version: 0.2
+env:
+  shell: bash
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+  pre_build:
+    commands:
+      - echo Ubuntu package installation
+      - apt update
+      - export DEBIAN_FRONTEND=noninteractive
+      - apt install -y tzdata curl
+      - echo Started Installing NPM Packages
+      - apt install -y rubygems
+      - gem install toolkit
+      - gem install compass
+      - ls -l
+      - pwd
+      - . envfile
+      - env
+      - npm install
+  build:
+    commands:
+      - echo NPM Build started on `date`
+      - printf "\nY" | npm run build
+      - ls -l
+      - cd dist_production
+      - ls -l
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'dist_production/native'
